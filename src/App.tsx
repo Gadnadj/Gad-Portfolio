@@ -7,7 +7,6 @@ import Experience from './components/Experience';
 import Contact from './Contact';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
-import Brands from './components/Brands';
 import SectionDivider from './components/SectionDivider';
 import { LanguageProvider } from './context/LanguageContext';
 import LanguageToggle from './components/LanguageToggle';
@@ -20,7 +19,6 @@ function App() {
         <LanguageToggle />
         <Hero />
         <SectionDivider bgColor="bg-secondary" />
-        <Brands />
         <SectionDivider />
         <About />
         <SectionDivider bgColor="bg-tertiary" />
