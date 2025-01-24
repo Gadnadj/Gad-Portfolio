@@ -1,33 +1,43 @@
-import { motion } from 'framer-motion';
+import { FormEvent, useState } from 'react';
 import { contact } from '../data';
-import { useRef } from 'react';
-import emailjs from '@emailjs/browser';
-import { toast, Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { motion } from 'framer-motion';
 import ShootingStars from './ShootingStars';
 
 const Contact = () => {
-    const form = useRef<HTMLFormElement>(null);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
 
-    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
+        
+        try {
+            const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
 
-        if (form.current) {
-            emailjs
-                .sendForm(
-                    'service_2jep1ne',
-                    'template_7v5udri',
-                    form.current,
-                    'user_your_emailjs_key'
-                )
-                .then(
-                    () => {
-                        toast.success('Message sent successfully!');
-                        if (form.current) form.current.reset();
-                    },
-                    () => {
-                        toast.error('Something went wrong. Please try again.');
-                    }
-                );
+            if (response.ok) {
+                toast.success('Message sent successfully!');
+                setFormData({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            } else {
+                toast.error('Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            toast.error('Something went wrong. Please try again.');
         }
     };
 
@@ -51,7 +61,6 @@ const Contact = () => {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                     >
-                        Ready to bring your digital vision to life? Whether you need a scalable web application, a robust API, or a complete full-stack solution, I'm here to help transform your ideas into high-performing, user-friendly applications.
                     </motion.p>
                 </div>
 
@@ -61,7 +70,7 @@ const Contact = () => {
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
+                        transition={{ duration: 0.5 }}
                     >
                         {contact.map((item, index) => {
                             const { icon, title, subtitle } = item;
@@ -80,27 +89,58 @@ const Contact = () => {
                     </motion.div>
 
                     <motion.form
-                        ref={form}
-                        onSubmit={sendEmail}
                         className='space-y-8 w-full max-w-[780px]'
+                        onSubmit={handleSubmit}
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
+                        transition={{ duration: 0.5 }}
                     >
                         <div className='flex gap-8'>
-                            <input className='input' type='text' name='name' placeholder='Name' />
-                            <input className='input' type='email' name='email' placeholder='Email' />
+                            <input
+                                className='input'
+                                type='text'
+                                placeholder='Name'
+                                value={formData.name}
+                                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                required
+                            />
+                            <input
+                                className='input'
+                                type='email'
+                                placeholder='Email'
+                                value={formData.email}
+                                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                required
+                            />
                         </div>
-                        <input type='text' className='input' name='subject' placeholder='Subject' />
-                        <textarea className='textarea' name='message' placeholder='Message'></textarea>
-                        <button type='submit' className='btn btn-lg bg-accent hover:bg-accent-hover'>
+                        <input
+                            className='input'
+                            type='text'
+                            placeholder='Subject'
+                            value={formData.subject}
+                            onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                            required
+                        />
+                        <textarea
+                            className='textarea'
+                            placeholder='Message'
+                            value={formData.message}
+                            onChange={(e) => setFormData({...formData, message: e.target.value})}
+                            required
+                        ></textarea>
+                        <motion.button 
+                            type='submit' 
+                            className='btn btn-lg bg-accent hover:bg-accent-hover'
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
                             Send Message
-                        </button>
+                        </motion.button>
                     </motion.form>
                 </div>
             </div>
-            <Toaster position="bottom-right" />
+            <ToastContainer position="bottom-right" />
         </section>
     );
 };
