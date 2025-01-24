@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const Footer = () => {
     return (
         <motion.footer 
-            className='bg-tertiary py-12'
+            className='bg-secondary py-12'
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

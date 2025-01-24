@@ -13,7 +13,7 @@ const Hero = () => {
                 <div className='flex flex-col gap-y-8 lg:flex-row lg:items-center lg:gap-x-12'>
                     <div className='flex-1 text-center lg:text-left'>
                         <motion.h1 
-                            className='text-[55px] font-bold leading-[0.8] lg:text-[80px] mb-4'
+                            className='text-[20px] leading-[0.8] lg:text-[20px] mb-4'
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}

@@ -32,7 +32,7 @@ const Skills = () => {
     };
 
     return (
-        <section id='skills' className='section bg-tertiary py-12'>
+        <section id='skills' className='section bg-secondary py-12'>
             <div className='container mx-auto'>
                 <motion.h2 
                     className='section-title text-center mb-16'
