@@ -1,68 +1,59 @@
-import { FormEvent, useState } from 'react';
-import { contact } from './data';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useLanguage } from './context/LanguageContext';
-import { translations } from './translations';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-    const { language } = useLanguage();
-    const t = translations[language];
-    const isRTL = language === 'he';
-
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         subject: '',
         message: ''
     });
+    const [isLoading, setIsLoading] = useState(false);
+    const [status, setStatus] = useState<'success' | 'error' | null>(null);
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
-        try {
-            const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+        setIsLoading(true);
+        setStatus(null);
 
-            if (response.ok) {
-                toast.success(t.contact.form.success);
-                setFormData({
-                    name: '',
-                    email: '',
-                    subject: '',
-                    message: ''
-                });
-            } else {
-                toast.error(t.contact.form.error);
-            }
+        try {
+            await emailjs.send(
+                'service_your_service_id',
+                'template_your_template_id',
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message
+                },
+                'your_public_key'
+            );
+            setStatus('success');
+            setFormData({ name: '', email: '', subject: '', message: '' });
         } catch (error) {
-            toast.error(t.contact.form.error);
+            setStatus('error');
+        } finally {
+            setIsLoading(false);
         }
     };
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
     return (
-        <section 
-            className='section bg-primary' 
-            id='contact'
-            dir={isRTL ? 'rtl' : 'ltr'}
-        >
+        <section id='contact' className='section bg-primary'>
             <div className='container mx-auto'>
                 <div className='flex flex-col items-center text-center'>
                     <motion.h2 
-                        className={`section-title before:content-contact relative before:absolute before:opacity-40 before:-top-7 before:hidden before:lg:block ${
-                            isRTL ? 'before:-right-40' : 'before:-left-40'
-                        }`}
+                        className='section-title'
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        {t.contact.title}
+                        Contact Me
                     </motion.h2>
                     <motion.p 
                         className='subtitle'
@@ -71,91 +62,87 @@ const Contact = () => {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                     >
-                        {t.contact.subtitle}
+                        Ready to bring your digital vision to life? Whether you need a scalable web application, a robust API, or a complete full-stack solution, I'm here to help transform your ideas into high-performing, user-friendly applications.
                     </motion.p>
                 </div>
 
                 <div className='flex flex-col lg:gap-x-8 lg:flex-row'>
-                    <motion.div
-                        className='flex flex-1 flex-col items-start space-y-8 mb-12 lg:mb-0 lg:pt-2'
+                    <motion.form 
+                        className='space-y-8 w-full max-w-[780px] mx-auto'
+                        onSubmit={handleSubmit}
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        {contact.map((item, index) => {
-                            const { icon } = item;
-                            return (
-                                <div className='flex flex-col lg:flex-row gap-x-4' key={index}>
-                                    <div className='text-accent rounded-sm w-14 h-14 flex items-start justify-center mt-2 mb-4 lg:mb-0 text-2xl'>
-                                        {icon}
-                                    </div>
-                                    <div>
-                                        <h4 className='font-body text-xl mb-1'>
-                                            {t.contact.info.location.title}
-                                        </h4>
-                                        <p className='mb-1'>
-                                            {t.contact.info.location.subtitle}
-                                        </p>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </motion.div>
-
-                    <motion.form
-                        className='space-y-8 w-full max-w-[780px]'
-                        onSubmit={handleSubmit}
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ delay: 0.3 }}
                     >
                         <div className='flex gap-8'>
                             <input
                                 className='input'
                                 type='text'
-                                placeholder={t.contact.form.name}
+                                name='name'
                                 value={formData.name}
-                                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                onChange={handleChange}
+                                placeholder='Name'
                                 required
                             />
                             <input
                                 className='input'
                                 type='email'
-                                placeholder={t.contact.form.email}
+                                name='email'
                                 value={formData.email}
-                                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                onChange={handleChange}
+                                placeholder='Email'
                                 required
                             />
                         </div>
                         <input
                             className='input'
                             type='text'
-                            placeholder={t.contact.form.subject}
+                            name='subject'
                             value={formData.subject}
-                            onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                            onChange={handleChange}
+                            placeholder='Subject'
                             required
                         />
                         <textarea
                             className='textarea'
-                            placeholder={t.contact.form.message}
+                            name='message'
                             value={formData.message}
-                            onChange={(e) => setFormData({...formData, message: e.target.value})}
+                            onChange={handleChange}
+                            placeholder='Message'
                             required
-                        ></textarea>
-                        <motion.button 
-                            type='submit' 
+                        />
+                        <motion.button
                             className='btn btn-lg bg-accent hover:bg-accent-hover'
+                            type='submit'
+                            disabled={isLoading}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            {t.contact.form.send}
+                            {isLoading ? 'Sending...' : 'Send Message'}
                         </motion.button>
+                        {status === 'success' && (
+                            <p className='text-green-500'>Message sent successfully!</p>
+                        )}
+                        {status === 'error' && (
+                            <p className='text-red-500'>Something went wrong. Please try again.</p>
+                        )}
                     </motion.form>
+
+                    <motion.div
+                        className='flex flex-col lg:flex-row gap-x-8 lg:gap-y-8 mb-12 lg:mb-24'
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                    >
+                        <div>
+                            <h4 className='text-xl mb-2 font-medium'>Location</h4>
+                            <p>Israel</p>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
-            <ToastContainer position="bottom-right" />
         </section>
     );
 };

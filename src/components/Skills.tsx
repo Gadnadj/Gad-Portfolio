@@ -1,11 +1,7 @@
 import { skills } from '../data';
 import { motion } from 'framer-motion';
-import { useLanguage } from '../context/LanguageContext';
 
 const Skills = () => {
-    const { language, translations } = useLanguage();
-    const isRTL = language === 'he';
-
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -44,7 +40,7 @@ const Skills = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    {translations.nav.skills}
+                    Skills
                 </motion.h2>
 
                 <motion.div

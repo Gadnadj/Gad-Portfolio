@@ -1,100 +1,112 @@
-import { useState, useEffect } from 'react';
-import { projectData2 } from '../data';
-import { projectsNav } from '../data';
-import Project from './Project';
-import { ItemType } from './Types';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../translations';
+import { projectData2 as projects } from '../data';
 
-const Projects = () => {
-    const { language } = useLanguage();
-    const t = translations[language];
+type Project = {
+    id: string;
+    name: string;
+    image: string;
+    category: string;
+};
 
-    const [item, setItem] = useState<ItemType>({ id: '', name: 'all', image: '', category: '' });
-    const [projects, setProjects] = useState<ItemType[]>([]);
-    const [active, setActive] = useState<number>(0);
-    const [visibleProjects, setVisibleProjects] = useState<number>(6);
+type ProjectsProps = {
+    category: string;
+    setCategory: (category: string) => void;
+};
 
-    useEffect(() => {
-        // get projects based on item
-        if (item.name === 'all') {
-            setProjects(projectData2);
-        }
-        else {
-            const newProjects = projectData2.filter((project) => {
-                return project.category.toLowerCase() === item.name;
-            });
-            setProjects(newProjects);
-            setVisibleProjects(6); // Reset visible projects when category changes
-        }
-    }, [item]);
+const Projects = ({ category, setCategory }: ProjectsProps) => {
+    const [showAll, setShowAll] = useState(false);
 
-    const handleClick = (index: number, item: { name: string }) => {
-        setItem({ id: '', name: item.name.toLowerCase(), image: '', category: '' });
-        setActive(index);
-    };
+    const categories = [
+        { id: 'all', name: 'All' },
+        { id: 'logo', name: 'Logo' },
+        { id: 'branding', name: 'Branding' },
+        { id: 'website', name: 'Website' },
+        { id: 'magazine', name: 'Magazine' },
+        { id: 'flyer', name: 'Flyer' },
+        { id: 'brochure', name: 'Brochure' },
+        { id: 'poster', name: 'Poster' },
+        { id: 'menu', name: 'Menu' },
+        { id: 'businesscard', name: 'Business Card' }
+    ];
 
-    const loadMoreProjects = () => {
-        setVisibleProjects(prev => prev + 6);
-    };
+    const filteredProjects = category === 'all' 
+        ? projects 
+        : projects.filter((item: Project) => item.category === category);
+
+    const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
 
     return (
-        <div>
-            {/* nav */}
-            <motion.nav
-                className='mt-12 mb-12 max-w-xl mx-auto'
-                initial={{ opacity: 0, y: -20 }}
+        <>
+            <motion.div 
+                className='flex flex-wrap justify-center gap-2 mb-8'
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
+                transition={{ delay: 0.4 }}
             >
-                <ul className='flex flex-wrap md:flex-nowrap justify-center items-center text-white'>
-                    {projectsNav.map((item, index) => {
-                        const categoryKey = item.name.toLowerCase() as keyof typeof t.portfolio.categories;
-                        return (
-                            <motion.li
-                                onClick={() => handleClick(index, item)}
-                                className={`${active === index ? 'active' : ''} cursor-pointer capitalize m-4`}
-                                key={index}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                {t.portfolio.categories[categoryKey] || item.name}
-                            </motion.li>
-                        );
-                    })}
-                </ul>
-            </motion.nav>
-
-            {/* projects grid */}
-            <motion.section
-                className='grid lg:grid-cols-3 lg:gap-x-8 gap-y-12 lg:gap-y-8'
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-            >
-                {projects.slice(0, visibleProjects).map((item) => (
-                    <Project item={item} key={item.id} />
-                ))}
-            </motion.section>
-
-            {/* Load More Button */}
-            {projects.length > visibleProjects && (
-                <div className='flex justify-center mt-8'>
-                    <motion.button
-                        onClick={loadMoreProjects}
-                        className='bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-lg'
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                {categories.map((cat) => (
+                    <button
+                        key={cat.id}
+                        onClick={() => setCategory(cat.id)}
+                        className={`btn btn-sm ${category === cat.id ? 'bg-accent' : 'bg-secondary'} hover:bg-accent-hover`}
                     >
-                        {t.portfolio.loadMore}
-                    </motion.button>
-                </div>
+                        {cat.name}
+                    </button>
+                ))}
+            </motion.div>
+
+            <motion.div 
+                className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+            >
+                {displayedProjects.map((item: Project, index: number) => (
+                    <motion.div
+                        key={index}
+                        className='group relative overflow-hidden rounded-xl'
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.2 }}
+                    >
+                        <div className='group relative overflow-hidden rounded-xl'>
+                            <div className='relative'>
+                                <img 
+                                    className='w-full h-[300px] object-cover transition-all duration-300 group-hover:scale-110'
+                                    src={item.image} 
+                                    alt={item.name} 
+                                />
+                                <div className='absolute inset-0 bg-gradient-to-t from-black/80 to-black/0 opacity-0 group-hover:opacity-100 transition-all duration-300' />
+                            </div>
+                            <div className='absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-all duration-300'>
+                                <h4 className='text-xl font-bold text-white mb-2'>{item.name}</h4>
+                                <p className='text-sm text-white/80'>{item.category}</p>
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </motion.div>
+
+            {filteredProjects.length > 6 && (
+                <motion.div 
+                    className='text-center mt-8'
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.8 }}
+                >
+                    <button
+                        onClick={() => setShowAll(!showAll)}
+                        className='btn btn-lg bg-accent hover:bg-accent-hover'
+                    >
+                        {showAll ? 'Show Less' : 'Load More'}
+                    </button>
+                </motion.div>
             )}
-        </div>
+        </>
     );
 };
 

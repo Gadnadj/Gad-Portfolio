@@ -1,49 +1,38 @@
-import { ItemType } from './Types';
 import { motion } from 'framer-motion';
-import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../translations';
 
-type Props = {
-    item: ItemType;
-}
-
-const Project = ({ item }: Props) => {
-    const { language } = useLanguage();
-    const t = translations[language];
-
-    // Fonction pour obtenir la traduction de la catégorie
-    const getCategoryTranslation = (category: string) => {
-        const categoryKey = category.toLowerCase() as keyof typeof t.portfolio.categories;
-        return t.portfolio.categories[categoryKey] || category;
+type ProjectProps = {
+    item: {
+        id: string;
+        name: string;
+        image: string;
+        category: string;
     };
+};
 
+const Project = ({ item }: ProjectProps) => {
     return (
         <motion.div
-            className='flex flex-col items-center text-center'
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             layout
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className='relative'
         >
-            <motion.div
-                className='relative group mb-8'
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-            >
-                <img className='rounded-2xl w-96 h-96 object-cover' src={item.image} alt={item.name} />
-                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-2xl flex items-center justify-center z-[9999]">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-center px-4"
-                    >
-                        <h3 className='text-2xl font-bold text-white mb-2'>{item.name}</h3>
-                        <p className='text-accent text-sm'>{getCategoryTranslation(item.category)}</p>
-                    </motion.div>
+            <div className='group relative overflow-hidden rounded-xl'>
+                <div className='relative'>
+                    <img 
+                        className='w-full h-[300px] object-cover transition-all duration-300 group-hover:scale-110'
+                        src={item.image} 
+                        alt={item.name} 
+                    />
+                    <div className='absolute inset-0 bg-gradient-to-t from-black/80 to-black/0 opacity-0 group-hover:opacity-100 transition-all duration-300' />
                 </div>
-            </motion.div>
+                <div className='absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-all duration-300'>
+                    <h4 className='text-xl font-bold text-white mb-2'>{item.name}</h4>
+                    <p className='text-sm text-white/80'>{item.category}</p>
+                </div>
+            </div>
         </motion.div>
     );
 };

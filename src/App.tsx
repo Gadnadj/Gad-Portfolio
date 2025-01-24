@@ -8,30 +8,25 @@ import Contact from './Contact';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
 import SectionDivider from './components/SectionDivider';
-import { LanguageProvider } from './context/LanguageContext';
-import LanguageToggle from './components/LanguageToggle';
 
 function App() {
   return (
-    <LanguageProvider>
-      <div className="overflow-x-hidden">
-        <Headers />
-        <LanguageToggle />
-        <Hero />
-        <SectionDivider bgColor="bg-secondary" />
-        <About />
-        <SectionDivider bgColor="bg-tertiary" />
-        <Skills />
-        <SectionDivider bgColor="bg-tertiary" />
-        <Portofolio />
-        <SectionDivider bgColor="bg-tertiary" />
-        <Education />
-        <SectionDivider />
-        <Contact />
-        <Footer />
-        <BackToTopButton />
-      </div>
-    </LanguageProvider>
+    <div className="overflow-x-hidden">
+      <Headers />
+      <Hero />
+      <SectionDivider bgColor="bg-secondary" />
+      <About />
+      <SectionDivider bgColor="bg-tertiary" />
+      <Skills />
+      <SectionDivider bgColor="bg-tertiary" />
+      <Portofolio />
+      <SectionDivider bgColor="bg-tertiary" />
+      <Education />
+      <SectionDivider />
+      <Contact />
+      <Footer />
+      <BackToTopButton />
+    </div>
   );
 }
 

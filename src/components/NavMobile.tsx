@@ -2,13 +2,9 @@ import { useState } from 'react';
 import { navigation } from '../data';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../translations';
 
 const NavMobile = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const { language } = useLanguage();
-    const t = translations[language];
 
     // framer motion variants
     const circleVariants = {
@@ -76,7 +72,7 @@ const NavMobile = () => {
                             className='text-xl cursor-pointer capitalize'
                             onClick={() => setIsOpen(false)}
                         >
-                            {t.nav[item.name as keyof typeof t.nav]}
+                            {item.name}
                         </Link>
                     </li>
                 ))}
