@@ -36,7 +36,7 @@ const Hero = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.4 }}
                         >
-                            Passionate about clean code and beautiful design
+                            Clean code. Intuitive design. Efficient solutions.
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
