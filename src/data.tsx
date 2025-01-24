@@ -25,7 +25,7 @@ import Jarvis from './assets/img/projects2/Jarvis.png';
 import LittleLemon from './assets/img/projects2/LittleLemon.png';
 import Lumiverse from './assets/img/projects2/Lumiverse.png';
 import Mealicious from './assets/img/projects2/Mealicious.png';
-import Rentalcars from './assets/img/projects2/rentalCars.png';
+import Rentalcars from './assets/img/projects2/rentalcars.png';
 import Steimatzky from './assets/img/projects2/Steimatzky.png';
 import MyTrip from './assets/img/projects2/MyTrip.png';
 
@@ -36,28 +36,28 @@ import MyTrip from './assets/img/projects2/MyTrip.png';
 // navigation
 export const navigation = [
     {
-        name: 'home',
+        name: 'Home',
         href: 'home'
     },
     {
-        name: 'about',
+        name: 'About',
         href: 'about'
     },
 
     {
-        name: 'skills',
+        name: 'Skills',
         href: 'skills'
     },
     {
-        name: 'portfolio',
+        name: 'Portfolio',
         href: 'portfolio'
     },
     {
-        name: 'education',
+        name: 'Education',
         href: 'education'
     },
     {
-        name: 'contact',
+        name: 'Contact',
         href: 'contact'
     }
 ];
