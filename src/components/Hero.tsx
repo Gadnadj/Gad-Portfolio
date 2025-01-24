@@ -49,7 +49,7 @@ const Hero = () => {
                                 download="Gad Nadjar.pdf"
                                 className='btn btn-md bg-accent hover:bg-accent-hover md:btn-lg transition-all w-fit px-6'
                             >
-                                Download my CV
+                                Download my Resume
                             </a>
                         </motion.div>
                     </div>

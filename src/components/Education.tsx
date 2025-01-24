@@ -52,7 +52,7 @@ const Education = () => {
                                 className='w-12 h-12 object-contain'
                             />
                             <div>
-                                <div className='text-accent text-md'>2024</div>
+                                <div className='text-accent text-md'>2023</div>
                                 <h3 className='text-xl font-bold mt-2'>Front-End Developer Professional Certificate</h3>
                                 <div className='text-blue-500/80 mt-1 text-xl'>Meta</div>
                             </div>
