@@ -3,6 +3,7 @@ import Reveal from './Reveal';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { projectsNav } from '../data';
+import ShootingStars from './ShootingStars';
 
 const Portfolio = () => {
     const [category, setCategory] = useState('all');
@@ -10,9 +11,10 @@ const Portfolio = () => {
     return (
         <section
             id='portfolio'
-            className='section bg-primary min-h-[1400px]'
+            className='section bg-primary min-h-[1400px] relative overflow-hidden'
         >
-            <div className='container mx-auto'>
+            <ShootingStars containerId="portfolio-particles" />
+            <div className='container mx-auto relative z-20'>
                 <div className='flex flex-col items-center text-center -mb-8'>
                     <motion.h2 
                         className='section-title before:content-portfolio relative before:absolute before:opacity-40 before:-top-[2rem] before:hidden before:lg:block before:-left-[105%]'
