@@ -29,7 +29,7 @@ const Hero = () => {
                         </Reveal>
                         <Reveal delay={0.4}>
                             <p className={`pt-4 pb-8 md:pt-6 md:pb-12 max-w-[480px] text-lg text-center ${isRTL ? 'lg:text-end' : 'lg:text-start'}`}>
-                                {translations.hero.services}
+                                {translations.hero.experience}
                             </p>
                         </Reveal>
                         <motion.a

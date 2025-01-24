@@ -1,82 +1,153 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+import { FaBriefcase } from 'react-icons/fa';
 
 const experiences = [
     {
         date: '2023 - Present',
+        company: 'Sidewalk Medias',
+        position: 'Founder & Creative Director',
+        description: 'Leading creative projects and managing client relationships. Specializing in brand identity, web design, and digital marketing solutions.',
+        skills: ['Branding', 'Web Design', 'Digital Marketing', 'UI/UX', 'Social Media']
+    },
+    {
+        date: '2021 - 2023',
         company: 'Freelance',
-        position: 'Full Stack Developer',
-        description: 'Developed and maintained multiple client websites using React, Node.js, and MongoDB. Implemented responsive designs and modern UI/UX practices. Managed client relationships and project timelines effectively.'
+        position: 'Graphic Designer',
+        description: 'Collaborated with various clients on brand identity, print design, and digital media projects.',
+        skills: ['Logo Design', 'Print Design', 'Digital Design', 'Client Relations']
     },
     {
-        date: '2022 - 2023',
-        company: 'Tech Startup XYZ',
-        position: 'Frontend Developer',
-        description: 'Led the frontend development of a SaaS platform using React and TypeScript. Collaborated with UI/UX designers to implement pixel-perfect designs. Improved website performance by 40%.'
-    },
-    {
-        date: '2021 - 2022',
-        company: 'Digital Agency ABC',
-        position: 'Web Developer',
-        description: 'Created custom WordPress themes and plugins for various clients. Worked in an agile team environment. Implemented SEO best practices and optimized website performance.'
-    },
-    {
-        date: '2020 - 2021',
-        company: 'Innovation Labs',
-        position: 'Junior Developer',
-        description: 'Started as an intern and quickly promoted to Junior Developer. Assisted in developing and maintaining client websites. Learned and implemented modern web development practices.'
+        date: '2019 - 2021',
+        company: 'Design Agency',
+        position: 'Junior Designer',
+        description: 'Worked on multiple projects for international clients, focusing on brand identity and marketing materials.',
+        skills: ['Adobe Suite', 'Brand Guidelines', 'Marketing Materials']
     }
 ];
 
 const Experience = () => {
+    const { language } = useLanguage();
+    const isRTL = language === 'he';
+
     return (
         <section id='experience' className='section bg-secondary'>
             <div className='container mx-auto'>
-                <div className='flex flex-col items-center text-center'>
-                    <motion.h2 
-                        className='section-title before:content-experience relative before:absolute before:opacity-40 before:-top-[2rem] before:-left-40 before:hidden before:lg:block'
-                        initial={{ opacity: 0, y: -20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        My Experience
-                    </motion.h2>
-                    <motion.p 
-                        className='subtitle'
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                    >
-                        My professional journey in web development
-                    </motion.p>
+                <motion.h2 
+                    className='h2 text-center mb-12'
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    Experience
+                </motion.h2>
+
+                {/* Desktop Timeline */}
+                <div className='hidden lg:block relative'>
+                    {/* Timeline line */}
+                    <div className='absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-accent/20'></div>
+
+                    {/* Experience items */}
+                    <div className='space-y-16'>
+                        {experiences.map((exp, index) => (
+                            <motion.div
+                                key={index}
+                                className='relative'
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.2 }}
+                            >
+                                {/* Timeline dot */}
+                                <div className='absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                                    <motion.div 
+                                        className='w-8 h-8 bg-accent rounded-full flex items-center justify-center'
+                                        whileHover={{ scale: 1.2 }}
+                                    >
+                                        <FaBriefcase className='text-white text-sm' />
+                                    </motion.div>
+                                </div>
+
+                                {/* Content card */}
+                                <motion.div 
+                                    className={`w-5/12 ${index % 2 === 0 ? 'mr-auto pr-16' : 'ml-auto pl-16'}`}
+                                    whileHover={{ y: -5 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <div className='bg-tertiary p-8 rounded-2xl shadow-lg'>
+                                        <span className='text-accent text-sm font-semibold'>{exp.date}</span>
+                                        <h3 className='text-xl font-bold mt-2'>{exp.position}</h3>
+                                        <div className='text-accent/80 font-medium mt-1'>{exp.company}</div>
+                                        <p className='text-paragraph mt-4'>{exp.description}</p>
+                                        
+                                        {/* Skills tags */}
+                                        <div className='flex flex-wrap gap-2 mt-4'>
+                                            {exp.skills.map((skill, skillIndex) => (
+                                                <motion.span
+                                                    key={skillIndex}
+                                                    className='bg-accent/10 text-accent px-3 py-1 rounded-full text-sm'
+                                                    whileHover={{ scale: 1.1 }}
+                                                >
+                                                    {skill}
+                                                </motion.span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
 
-                <div className='grid gap-y-[30px] lg:grid-cols-2 lg:gap-x-[30px]'>
-                    {experiences.map((experience, index) => (
-                        <motion.div
-                            key={index}
-                            className='bg-tertiary p-6 rounded-2xl'
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.2 }}
-                            whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                        >
-                            <div className='flex flex-col gap-y-2'>
-                                <div className='flex items-center justify-between'>
-                                    <span className='text-accent text-sm'>{experience.date}</span>
-                                    <motion.span 
-                                        className='bg-accent/20 text-accent py-1 px-3 rounded-full text-sm'
-                                        whileHover={{ scale: 1.05 }}
+                {/* Mobile Timeline */}
+                <div className='lg:hidden'>
+                    <div className='relative pl-8 border-l-2 border-accent/20 space-y-8'>
+                        {experiences.map((exp, index) => (
+                            <motion.div
+                                key={index}
+                                className='relative'
+                                initial={{ opacity: 0, x: -50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.2 }}
+                            >
+                                {/* Timeline dot */}
+                                <div className='absolute -left-[25px] top-0'>
+                                    <motion.div 
+                                        className='w-6 h-6 bg-accent rounded-full flex items-center justify-center'
+                                        whileHover={{ scale: 1.2 }}
                                     >
-                                        {experience.company}
-                                    </motion.span>
+                                        <FaBriefcase className='text-white text-xs' />
+                                    </motion.div>
                                 </div>
-                                <h4 className='text-xl font-semibold'>{experience.position}</h4>
-                                <p className='text-[15px] leading-relaxed'>{experience.description}</p>
-                            </div>
-                        </motion.div>
-                    ))}
+
+                                {/* Content card */}
+                                <motion.div 
+                                    className='bg-tertiary p-6 rounded-2xl shadow-lg'
+                                    whileHover={{ x: 5 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <span className='text-accent text-sm font-semibold'>{exp.date}</span>
+                                    <h3 className='text-lg font-bold mt-2'>{exp.position}</h3>
+                                    <div className='text-accent/80 font-medium mt-1'>{exp.company}</div>
+                                    <p className='text-paragraph mt-3 text-sm'>{exp.description}</p>
+                                    
+                                    {/* Skills tags */}
+                                    <div className='flex flex-wrap gap-2 mt-3'>
+                                        {exp.skills.map((skill, skillIndex) => (
+                                            <motion.span
+                                                key={skillIndex}
+                                                className='bg-accent/10 text-accent px-2 py-1 rounded-full text-xs'
+                                                whileHover={{ scale: 1.1 }}
+                                            >
+                                                {skill}
+                                            </motion.span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

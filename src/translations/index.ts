@@ -15,14 +15,15 @@ export const translations = {
             home: 'home',
             about: 'about',
             portfolio: 'portfolio',
-            services: 'services',
+            skills: 'skills',
+            experience: 'experience',
             contact: 'contact'
         },
         hero: {
             greeting: 'Hey, I am Gad Nadjar 👋',
             title: 'Cross the street',
             subtitle: 'with us.',
-            services: 'Logo • Business card • Flyer • Magazine • Video • Social Media • Website • Menu',
+            experience: 'Photoshop • Illustrator • InDesign • After Effects • CapCut • Figma • Wix • WordPress',
             cta: 'Contact Me',
             downloadCV: 'Download my CV'
         },
@@ -48,35 +49,6 @@ export const translations = {
                 businesscard: 'business card'
             },
             loadMore: 'More Projects'
-        },
-        services: {
-            title: 'What I Do',
-            services: {
-                logo: {
-                    title: 'Logo',
-                    description: 'Creation of unique and memorable logos that embody the essence of your brand. A professional design that sets you apart from the competition and remains etched in the minds of your clients.'
-                },
-                businessCard: {
-                    title: 'Business Card',
-                    description: 'Elegant and impactful business cards that make a strong impression. A carefully crafted design that reflects your professionalism and strengthens your brand image.'
-                },
-                magazine: {
-                    title: 'Magazine',
-                    description: 'Creative and professional magazine layout that captivates your readers. A perfect harmony between text and images for an optimal reading experience.'
-                },
-                flyer: {
-                    title: 'Flyer',
-                    description: 'Design of eye-catching flyers that attract attention and effectively convey your message. A striking design to maximize the impact of your promotional campaigns.'
-                },
-                video: {
-                    title: 'Video',
-                    description: 'Production of dynamic and engaging video content for your social media and communications. Animations that bring your message to life and captivate your audience.'
-                },
-                website: {
-                    title: 'Website',
-                    description: 'Creation of modern and responsive websites that reflect your identity. An optimized user experience combined with aesthetic design for an effective online presence.'
-                }
-            }
         },
         contact: {
             title: 'Contact me',
@@ -108,14 +80,15 @@ export const translations = {
             home: 'בית',
             about: 'אודות',
             portfolio: 'תיק עבודות',
-            services: 'שירותים',
+            skills: 'כישורים',
+            experience: 'ניסיון',
             contact: 'צור קשר'
         },
         hero: {
             greeting: 'היי, אני גד נגר 👋',
             title: 'חצה את הכביש',
             subtitle: 'איתנו.',
-            services: 'לוגו • כרטיס ביקור • פלייר • מגזין • וידאו • רשתות חברתיות • אתר אינטרנט • תפריט',
+            experience: 'פוטושופ • אילוסטרייטור • אינדיזיין • אפטר אפקטס • קאפקאט • פיגמה • וויקס • וורדפרס',
             cta: 'צור קשר',
             downloadCV: 'הורד את קורות החיים שלי'
         },
@@ -141,35 +114,6 @@ export const translations = {
                 businesscard: 'כרטיס ביקור'
             },
             loadMore: 'עוד פרויקטים'
-        },
-        services: {
-            title: 'השירותים שלי',
-            services: {
-                logo: {
-                    title: 'לוגו',
-                    description: 'יצירת לוגואים ייחודיים וזכירים המגלמים את מהות המותג שלך. עיצוב מקצועי שמבדיל אותך מהתחרות ונשאר חרוט בזיכרון הלקוחות שלך.'
-                },
-                businessCard: {
-                    title: 'כרטיס ביקור',
-                    description: 'כרטיסי ביקור אלגנטיים ומרשימים שיוצרים רושם חזק. עיצוב מוקפד המשקף את המקצועיות שלך ומחזק את תדמית המותג שלך.'
-                },
-                magazine: {
-                    title: 'מגזין',
-                    description: 'עימוד מגזינים יצירתי ומקצועי שמרתק את הקוראים שלך. הרמוניה מושלמת בין טקסט לתמונות לחוויית קריאה אופטימלית.'
-                },
-                flyer: {
-                    title: 'פלייר',
-                    description: 'עיצוב פליירים מושכי עין שמושכים תשומת לב ומעבירים את המסר שלך ביעילות. עיצוב מרשים למקסום ההשפעה של הקמפיינים הפרסומיים שלך.'
-                },
-                video: {
-                    title: 'וידאו',
-                    description: 'הפקת תוכן וידאו דינמי ומעורר עניין לרשתות החברתיות והתקשורת שלך. אנימציות שמחיות את המסר שלך ומרתקות את הקהל שלך.'
-                },
-                website: {
-                    title: 'אתר אינטרנט',
-                    description: 'יצירת אתרי אינטרנט מודרניים ורספונסיביים המשקפים את הזהות שלך. חווית משתמש מותאמת בשילוב עיצוב אסתטי לנוכחות אונליין אפקטיבית.'
-                }
-            }
         },
         contact: {
             title: 'צור קשר',

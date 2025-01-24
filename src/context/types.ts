@@ -8,14 +8,15 @@ export interface LanguageContextType {
             home: string;
             about: string;
             portfolio: string;
-            services: string;
+            skills: string;
+            experience: string;
             contact: string;
         };
         hero: {
             greeting: string;
             title: string;
             subtitle: string;
-            services: string;
+            experience: string;
             cta: string;
             downloadCV: string;
         };
@@ -41,35 +42,6 @@ export interface LanguageContextType {
                 businesscard: string;
             };
             loadMore: string;
-        };
-        services: {
-            title: string;
-            services: {
-                logo: {
-                    title: string;
-                    description: string;
-                };
-                businessCard: {
-                    title: string;
-                    description: string;
-                };
-                magazine: {
-                    title: string;
-                    description: string;
-                };
-                flyer: {
-                    title: string;
-                    description: string;
-                };
-                video: {
-                    title: string;
-                    description: string;
-                };
-                website: {
-                    title: string;
-                    description: string;
-                };
-            };
         };
         contact: {
             title: string;

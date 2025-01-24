@@ -90,21 +90,17 @@ export const navigation = [
         href: 'portfolio'
     },
     {
-        name: 'services',
-        href: 'services'
+        name: 'skills',
+        href: 'skills'
     },
-    // {
-    //     name: 'testimonials',
-    //     href: 'testimonials'
-    // },
+    {
+        name: 'experience',
+        href: 'experience'
+    },
     {
         name: 'contact',
         href: 'contact'
     }
-    // {
-    //     name: 'experience',
-    //     href: 'experience'
-    // }
 ];
 
 // social
