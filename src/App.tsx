@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Portofolio from './components/Portofolio';
-// import Experience from './components/Experience';
+import Education from './components/Education';
 import Contact from './Contact';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
@@ -25,7 +25,7 @@ function App() {
         <SectionDivider bgColor="bg-tertiary" />
         <Portofolio />
         <SectionDivider bgColor="bg-tertiary" />
-        {/* <Experience /> */}
+        <Education />
         <SectionDivider />
         <Contact />
         <Footer />

@@ -12,7 +12,7 @@ export type LanguageContextType = {
             about: string;
             portfolio: string;
             skills: string;
-            experience: string;
+            education: string;
             contact: string;
         };
         hero: {

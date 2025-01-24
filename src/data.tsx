@@ -31,10 +31,10 @@ export const navigation = [
         name: 'portfolio',
         href: 'portfolio'
     },
-    // {
-    //     name: 'experience',
-    //     href: 'experience'
-    // },
+    {
+        name: 'education',
+        href: 'education'
+    },
     {
         name: 'contact',
         href: 'contact'

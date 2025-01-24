@@ -64,7 +64,7 @@ const Skills = () => {
                                 className='bg-secondary rounded-xl p-4 h-[120px] flex flex-col items-center justify-center transition-all duration-300 group-hover:bg-accent/10'
                                 whileHover={{ 
                                     y: -5,
-                                    transition: { type: "spring", stiffness: 300 }
+                                    transition: { type: 'spring', stiffness: 300 }
                                 }}
                             >
                                 {/* Image container */}

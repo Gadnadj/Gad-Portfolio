@@ -16,7 +16,7 @@ export const translations = {
             about: 'about',
             portfolio: 'portfolio',
             skills: 'skills',
-            experience: 'experience',
+            education: 'education',
             contact: 'contact'
         },
         hero: {
@@ -76,7 +76,7 @@ export const translations = {
             about: 'אודות',
             portfolio: 'תיק עבודות',
             skills: 'כישורים',
-            experience: 'ניסיון',
+            education: 'השכלה',
             contact: 'צור קשר'
         },
         hero: {
