@@ -89,77 +89,77 @@ export const projectData2 = [
         image: Jarvis,
         name: 'Jarvis | Smart Speaker',
         category: 'Full Stack',
-        link: 'https://jarvis-gad.vercel.app'
+        link: 'https://github.com/Gadnadj/Jarvis-2.0'
     },
     {
         id: '2',
         image: MyTrip,
         name: 'MyTrip | Social Media',
         category: 'Full Stack',
-        link: 'https://mytrip-gad.vercel.app'
+        link: 'https://github.com/Gadnadj/MyTrip'
     },
     {
         id: '3',
         image: Aeonia,
         name: 'Aeonia | AI image generator',
         category: 'Full Stack',
-        link: 'https://aeonia-gad.vercel.app'
+        link: 'https://github.com/Gadnadj/Aeonia-Ai-Image-Generator'
     },
     {
         id: '4',
         image: Steimatzky,
         name: 'Steimatzky | Book Store',
         category: 'Full Stack',
-        link: 'https://steimatzky-gad.vercel.app'
+        link: 'https://steimatzky.netlify.app/'
     },
     {
         id: '5',
         image: Airbnb,
         name: 'Airbnb | Clone',
         category: 'Full Stack',
-        link: 'https://airbnb-gad.vercel.app'
+        link: 'https://github.com/Gadnadj/Airbnb-Frontend'
     },
     {
         id: '6',
         image: LittleLemon,
         name: 'Little Lemon | Restaurant',
         category: 'Full Stack',
-        link: 'https://littlelemon-gad.vercel.app'
+        link: 'https://github.com/Gadnadj/LittleLemonRestaurant'
     },
     {
         id: '7',
         image: Disney,
         name: 'Disney | Clone',
         category: 'Front End',
-        link: 'https://disney-gad.vercel.app'
+        link: 'https://disney-stars.netlify.app/'
     },
     {
         id: '8',
         image: Rentalcars,
         name: 'Rentalcars | Car Rental',
         category: 'Front End',
-        link: 'https://rentalcars-gad.vercel.app'
+        link: 'https://rentalcars-project.netlify.app/'
     },
     {
         id: '9',
         image: Mealicious,
         name: 'Mealicious | Restaurant',
         category: 'Front End',
-        link: 'https://mealicious-gad.vercel.app'
+        link: 'https://mealicious.netlify.app/'
     },
     {
         id: '10',
         image: Lumiverse,
         name: 'Lumiverse | VR Experience',
         category: 'Front End',
-        link: 'https://lumiverse-gad.vercel.app'
+        link: 'https://lumiversevr.netlify.app/'
     },
     {
         id: '11',
         image: Evogym,
         name: 'Evogym | Gym',
         category: 'Front End',
-        link: 'https://evogym-gad.vercel.app'
+        link: 'https://evogym-stars.netlify.app/'
     }
 ];
 
