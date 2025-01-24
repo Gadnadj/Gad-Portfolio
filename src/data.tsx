@@ -1,4 +1,4 @@
-import { FiFacebook, FiLinkedin } from 'react-icons/fi';
+import { FiFacebook, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { FiInstagram } from 'react-icons/fi';
 import { FiMapPin } from 'react-icons/fi';
 
@@ -28,8 +28,6 @@ import Mealicious from './assets/img/projects2/Mealicious.png';
 import Rentalcars from './assets/img/projects2/rentalCars.png';
 import Steimatzky from './assets/img/projects2/Steimatzky.png';
 import MyTrip from './assets/img/projects2/MyTrip.png';
-import Sidewalk_Media_Post from './assets/img/projects2/Sidewalk_Media_Post.png';
-import RentalCars from './assets/img/projects2/RentalCars.png';
 
 
 
@@ -67,16 +65,20 @@ export const navigation = [
 // social
 export const social = [
     {
+        icon: <FiLinkedin />,
+        href: 'https://www.linkedin.com/in/gad-nadjar/'
+    },
+    {
+        icon: <FiGithub />,
+        href: 'https://github.com/Gadnadj'
+    },
+    {
         icon: <FiInstagram />,
-        href: 'https://www.instagram.com/sidewalkmedias/'
+        href: 'https://www.instagram.com/gadnadj/'
     },
     {
         icon: <FiFacebook />,
-        href: 'https://www.facebook.com/SidewalkMedias'
-    },
-    {
-        icon: <FiLinkedin />,
-        href: 'https://www.linkedin.com/in/sidewalkmedias/'
+        href: 'https://www.facebook.com/gad.nadjar'
     }
 ];
 //projects 2

@@ -15,7 +15,7 @@ type ProjectsProps = {
     setCategory: (category: string) => void;
 };
 
-const Projects = ({ category, setCategory }: ProjectsProps) => {
+const Projects = ({ category }: ProjectsProps) => {
     const [showAll, setShowAll] = useState(false);
 
     const filteredProjects = category === 'all' 
