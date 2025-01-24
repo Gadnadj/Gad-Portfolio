@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import NavBar from './NavBar';
+import Nav from './NavBar';
 import NavMobile from './NavMobile';
 import Socials from './Socials';
 import { motion } from 'framer-motion';
 
 const Headers = () => {
-    const [background, setBackground] = useState<boolean>(false);
+    const [bg, setBg] = useState(false);
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
-            return window.scrollY > 50 ? setBackground(true) : setBackground(false);
+            return window.scrollY > 50 ? setBg(true) : setBg(false);
         });
     });
 
@@ -18,10 +18,11 @@ const Headers = () => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`${background ? 'bg-secondary h-20' : 'h-24'} flex items-center fixed top-0 w-full text-white z-10 transition-all duration-300`}
+            className={`${
+                bg ? 'bg-tertiary h-20' : 'h-24'
+            } flex items-center fixed top-0 w-full text-white z-50 transition-all duration-300`}
         >
-            <div className="container mx-auto flex items-center justify-between">
-                {/* logo */}
+            <div className='container mx-auto h-full flex items-center justify-between'>
                 <motion.a 
                     href="#"
                     initial={{ opacity: 0 }}
@@ -34,23 +35,12 @@ const Headers = () => {
                         <span className="font-light"> Nadjar</span>
                     </h2>
                 </motion.a>
-
-                {/* navbar */}
                 <div className='hidden lg:block'>
-                    <NavBar />
+                    <Nav />
                 </div>
-
-                {/* socials */}
-                <motion.div 
-                    className='hidden lg:block'
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.7 }}
-                >
+                <div className='hidden lg:block'>
                     <Socials />
-                </motion.div>
-
-                {/* nav mobile */}
+                </div>
                 <div className='lg:hidden'>
                     <NavMobile />
                 </div>
