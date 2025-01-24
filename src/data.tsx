@@ -1,6 +1,5 @@
 import { FiFacebook, FiLinkedin } from 'react-icons/fi';
 import { FiInstagram } from 'react-icons/fi';
-import { FiMail } from 'react-icons/fi';
 import { FiMapPin } from 'react-icons/fi';
 import Photoshop from './assets/img/skills2/photoshop.png';
 import Illustrator from './assets/img/skills2/illustrator.png';
@@ -120,12 +119,6 @@ export const skills = [
 
 // contact
 export const contact = [
-    {
-        icon: <FiMail />,
-        title: 'Have a question?',
-        subtitle: 'I am here to help you.',
-        description: 'gadnadjar@gmail.com'
-    },
     {
         icon: <FiMapPin />,
         title: 'Current Location',

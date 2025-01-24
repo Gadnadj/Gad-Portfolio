@@ -1,10 +1,80 @@
-import { createContext, useContext, useState } from 'react';
-import { Language, LanguageContextType } from './types';
+import { createContext, useContext, useState, ReactNode } from 'react';
 import { translations } from '../translations';
+
+type Language = 'en' | 'he';
+
+export type LanguageContextType = {
+    language: Language;
+    toggleLanguage: () => void;
+    translations: {
+        nav: {
+            home: string;
+            about: string;
+            portfolio: string;
+            skills: string;
+            experience: string;
+            contact: string;
+        };
+        hero: {
+            greeting: string;
+            title: string;
+            subtitle: string;
+            experience: string;
+            cta: string;
+            downloadCV: string;
+        };
+        about: {
+            title: string;
+            description: string;
+            description2: string;
+            cta: string;
+        };
+        portfolio: {
+            title: string;
+            subtitle: string;
+            categories: {
+                all: string;
+                logo: string;
+                branding: string;
+                website: string;
+                magazine: string;
+                flyer: string;
+                brochure: string;
+                poster: string;
+                menu: string;
+                businesscard: string;
+            };
+            loadMore: string;
+        };
+        contact: {
+            title: string;
+            subtitle: string;
+            form: {
+                name: string;
+                email: string;
+                subject: string;
+                message: string;
+                send: string;
+                success: string;
+                error: string;
+            };
+            info: {
+                location: {
+                    title: string;
+                    subtitle: string;
+                };
+            };
+        };
+    };
+};
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface LanguageProviderProps {
+    children: ReactNode;
+}
+
+export const LanguageProvider = ({ children }: LanguageProviderProps) => {
     const [language, setLanguage] = useState<Language>('en');
 
     const toggleLanguage = () => {
@@ -24,9 +94,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useLanguage = () => {
     const context = useContext(LanguageContext);
-    if (!context) throw new Error('useLanguage must be used within LanguageProvider');
+    if (context === undefined) {
+        throw new Error('useLanguage must be used within a LanguageProvider');
+    }
     return context;
 }; 

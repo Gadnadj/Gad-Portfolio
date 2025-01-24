@@ -21,9 +21,9 @@ export const translations = {
         },
         hero: {
             greeting: 'Hey, I am Gad Nadjar 👋',
-            title: 'Cross the street',
-            subtitle: 'with us.',
-            experience: 'Photoshop • Illustrator • InDesign • After Effects • CapCut • Figma • Wix • WordPress',
+            title: 'Full Stack',
+            subtitle: 'Developer',
+            experience: 'Clean code. Intuitive design. Efficient solutions.',
             cta: 'Contact Me',
             downloadCV: 'Download my CV'
         },
@@ -63,14 +63,9 @@ export const translations = {
                 error: 'Error sending message. Please try again.'
             },
             info: {
-                question: {
-                    title: 'Have a question?',
-                    subtitle: 'I am here to help you.'
-                },
                 location: {
                     title: 'Current Location',
-                    subtitle: 'Ashdod, Israel',
-                    description: 'Serving clients worldwide'
+                    subtitle: 'Haifa, Israel'
                 }
             }
         }
@@ -88,7 +83,9 @@ export const translations = {
             greeting: 'היי, אני גד נגר 👋',
             title: 'חצה את הכביש',
             subtitle: 'איתנו.',
-            experience: 'פוטושופ • אילוסטרייטור • אינדיזיין • אפטר אפקטס • קאפקאט • פיגמה • וויקס • וורדפרס',
+            experience: 'קוד נקי. עיצוב אינטואיטיבי. פתרונות יעילים.'
+
+,
             cta: 'צור קשר',
             downloadCV: 'הורד את קורות החיים שלי'
         },
@@ -128,14 +125,9 @@ export const translations = {
                 error: 'שגיאה בשליחת ההודעה. אנא נסה שוב.'
             },
             info: {
-                question: {
-                    title: 'יש לך שאלה?',
-                    subtitle: 'אני כאן כדי לעזור לך.'
-                },
                 location: {
-                    title: 'המיקום הנוכחי',
-                    subtitle: 'אשדוד, ישראל',
-                    description: 'משרת לקוחות בכל העולם'
+                    title: 'Current Location',
+                    subtitle: 'Haifa, Israel'
                 }
             }
         }

@@ -92,13 +92,10 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h4 className='font-body text-xl mb-1'>
-                                            {t.contact.info[index === 0 ? 'question' : 'location'].title}
+                                            {t.contact.info.location.title}
                                         </h4>
                                         <p className='mb-1'>
-                                            {t.contact.info[index === 0 ? 'question' : 'location'].subtitle}
-                                        </p>
-                                        <p className='text-accent font-normal'>
-                                            {index === 0 ? item.description : t.contact.info.location.description}
+                                            {t.contact.info.location.subtitle}
                                         </p>
                                     </div>
                                 </div>
