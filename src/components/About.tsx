@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import Image from '../assets/img/about.webp';
+import { Link } from 'react-scroll';
 
 const About = () => {
     return (
@@ -15,11 +15,6 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        <img
-                            className='object-cover h-full w-[556px] md:mx-auto lg:mx-0 rounded-2xl'
-                            src={Image}
-                            alt=""
-                        />
                     </motion.div>
                     <motion.div 
                         className='flex flex-col items-center text-center lg:items-start lg:text-left'
@@ -55,6 +50,21 @@ const About = () => {
                                 <br /><br />
                                 My approach combines technical expertise, artistic sensitivity, and a deep understanding of my clients' needs. Whether you're an established company or an ambitious startup, I am committed to transforming your ideas into impactful designs that set you apart from the competition.
                             </motion.p>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.6 }}
+                                className="flex justify-center lg:justify-start"
+                            >
+                                <Link 
+                                    to='contact'
+                                    smooth={true}
+                                    className='btn btn-md bg-accent hover:bg-accent-hover transition-all px-4 w-fit'
+                                >
+                                    Contact me
+                                </Link>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </div>

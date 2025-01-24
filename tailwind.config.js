@@ -1,21 +1,26 @@
-module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     fontFamily: {
       primary: 'Playfair Display',
-      body: 'Work Sans'
+      body: 'Work Sans',
+      poppins: ['Poppins', 'sans-serif'],
     },
     container: {
       padding: {
-        DEFAULT: '1rem',
+        DEFAULT: '15px',
         lg: '3rem'
       }
     },
     screens: {
       sm: '640px',
       md: '768px',
-      lg: '1024px',
-      xl: '1280px'
+      lg: '960px',
+      xl: '1200px'
     },
     extend: {
       content: {
@@ -28,9 +33,9 @@ module.exports = {
         skills: '"Skills"'
       },
       colors: {
-        primary: '#050402',
-        secondary: '#1C1D24',
-        tertiary: '#131419',
+        primary: '#0a0a0a',
+        secondary: '#131316',
+        tertiary: '#1d1d1d',
         accent: {
           DEFAULT: '#ac6b34',
           hover: '#925a2b'
