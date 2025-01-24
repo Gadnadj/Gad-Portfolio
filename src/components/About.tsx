@@ -24,11 +24,6 @@ const About = () => {
                         transition={{ duration: 0.5 }}
                         className={isRTL ? 'order-2' : ''}
                     >
-                        <img
-                            className='object-cover h-full w-[556px] md:mx-auto lg:mx-0 rounded-2xl'
-                            src={Image}
-                            alt=""
-                        />
                     </motion.div>
                     <motion.div 
                         className={`flex flex-col items-center text-center lg:items-start lg:text-left ${
@@ -63,11 +58,9 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.4 }}
-                            >
-                                {t.about.description}<br /><br />
-                                {t.about.description2}
-                            </motion.p>
-                            <motion.div className={isRTL ? 'self-end' : ''}>
+                                dangerouslySetInnerHTML={{ __html: t.about.description + '<br /><br />' + t.about.description2 }}
+                            />
+                            <motion.div className={`self-center lg:${isRTL ? 'self-end' : 'self-start'}`}>
                                 <Link
                                     to="contact"
                                     smooth={true}

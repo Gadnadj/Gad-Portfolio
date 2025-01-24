@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Portofolio from './components/Portofolio';
-import Experience from './components/Experience';
+// import Experience from './components/Experience';
 import Contact from './Contact';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
@@ -19,14 +19,13 @@ function App() {
         <LanguageToggle />
         <Hero />
         <SectionDivider bgColor="bg-secondary" />
-        <SectionDivider />
         <About />
         <SectionDivider bgColor="bg-tertiary" />
         <Skills />
         <SectionDivider bgColor="bg-tertiary" />
         <Portofolio />
         <SectionDivider bgColor="bg-tertiary" />
-        <Experience />
+        {/* <Experience /> */}
         <SectionDivider />
         <Contact />
         <Footer />

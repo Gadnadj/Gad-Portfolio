@@ -22,18 +22,19 @@ export const navigation = [
         name: 'about',
         href: 'about'
     },
-    {
-        name: 'portfolio',
-        href: 'portfolio'
-    },
+
     {
         name: 'skills',
         href: 'skills'
     },
     {
-        name: 'experience',
-        href: 'experience'
+        name: 'portfolio',
+        href: 'portfolio'
     },
+    // {
+    //     name: 'experience',
+    //     href: 'experience'
+    // },
     {
         name: 'contact',
         href: 'contact'
