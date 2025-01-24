@@ -2,9 +2,9 @@ import Headers from './components/Headers';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
-import Portofolio from './components/Portofolio';
+import Portfolio from './components/Portfolio';
 import Education from './components/Education';
-import Contact from './Contact';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
 import SectionDivider from './components/SectionDivider';
@@ -19,7 +19,7 @@ function App() {
       <SectionDivider bgColor="bg-tertiary" />
       <Skills />
       <SectionDivider bgColor="bg-tertiary" />
-      <Portofolio />
+      <Portfolio />
       <SectionDivider bgColor="bg-tertiary" />
       <Education />
       <SectionDivider />

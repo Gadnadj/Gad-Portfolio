@@ -1,64 +1,41 @@
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
-import { Link } from 'react-scroll';
+import HeroImage from '../assets/img/sidewalk.png';
 
 const Hero = () => {
     return (
         <section 
             id='home' 
-            className='section flex items-center bg-primary lg:h-[85vh] overflow-hidden'
+            className='lg:h-[85vh] flex items-center bg-primary lg:bg-cover lg:bg-center lg:bg-no-repeat py-32 lg:py-0 overflow-hidden relative'
         >
             <div className="container mx-auto h-full">
                 <div className="flex items-center h-full pt-8">
                     <div className="flex-1 flex flex-col items-center lg:items-start">
                         <Reveal>
-                            <h1 className="text-accent text-xl tracking-[4px]">
-                                Hello, I am
-                            </h1>
+                            <p className='text-lg text-accent mb-[22px]'>Hey, I am Gad Nadjar 👋</p>
                         </Reveal>
                         <Reveal delay={0.2}>
-                            <h2 className="h2 lg:text-8xl">
-                                Gad Nadjar
-                            </h2>
-                        </Reveal>
-                        <Reveal delay={0.3}>
-                            <h3 className="h3 lg:text-6xl lg:leading-tight">
-                                Full Stack Developer
-                            </h3>
+                            <h1 className='text-4xl leading-[44px] md:text-5xl md:leading-tight lg:text-7xl lg:leading-[1.2] font-bold md:tracking-[-2px] text-center lg:text-start'>
+                                <span className='text-accent'>Full Stack</span> <br /> Developer
+                            </h1>
                         </Reveal>
                         <Reveal delay={0.4}>
-                            <p className="pt-4 pb-8 md:pt-6 md:pb-12 max-w-[480px] text-lg text-center lg:text-start">
-                                Photoshop • Illustrator • InDesign • After Effects • CapCut • Figma • Wix • WordPress
+                            <p className='pt-4 pb-8 md:pt-6 md:pb-12 max-w-[480px] text-lg text-center lg:text-start'>
+                                Clean code. Intuitive design. Efficient solutions.
                             </p>
                         </Reveal>
-                        <Reveal delay={0.5}>
-                            <div className="flex gap-4">
-                                <Link
-                                    to="contact"
-                                    smooth={true}
-                                    duration={500}
-                                    offset={-70}
-                                    className="inline-block"
-                                >
-                                    <motion.button 
-                                        className='btn btn-md bg-accent hover:bg-accent-hover md:btn-lg transition-all'
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                    >
-                                        Contact me
-                                    </motion.button>
-                                </Link>
-                                <motion.a
-                                    href="/Gad Nadjar.pdf"
-                                    download="Gad Nadjar.pdf"
-                                    className='btn btn-md bg-transparent border border-white/50 hover:border-accent hover:bg-transparent md:btn-lg transition-all'
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Download my CV
-                                </motion.a>
-                            </div>
-                        </Reveal>
+                        <motion.a
+                            href="/Gad Nadjar.pdf"
+                            download="Gad Nadjar.pdf"
+                            className='btn btn-md bg-accent hover:bg-accent-hover md:btn-lg transition-all text-white'
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            Download my CV
+                        </motion.a>
+                    </div>
+                    <div className='hidden lg:flex flex-1 justify-end items-end'>
+                        <img src={HeroImage} alt='Sidewalk' className='w-[400px]' />
                     </div>
                 </div>
             </div>

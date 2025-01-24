@@ -1,48 +1,61 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
+import Image from '../assets/img/about.webp';
 
 const About = () => {
     return (
-        <section id='about' className='section bg-secondary'>
+        <section 
+            id='about' 
+            className='section bg-secondary'
+        >
             <div className='container mx-auto'>
-                <motion.h2 
-                    className='section-title text-center mb-16'
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    About me
-                </motion.h2>
-
-                <div className='flex flex-col lg:flex-row gap-24'>
-                    <motion.div 
-                        className='flex-1'
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                <div className='flex flex-col xl:flex-row gap-24'>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ duration: 0.5 }}
                     >
-                        <h3 className='h3 mb-4'>
-                            I am a passionate Full Stack Developer with a strong foundation in both front-end and back-end development. My journey in software engineering has equipped me with the skills to create seamless, user-centric web applications.
-                        </h3>
-                        <p className='mb-6'>
-                            I specialize in building responsive web applications using modern technologies like React, Node.js, and TypeScript. My approach combines technical expertise with creative problem-solving to deliver efficient and scalable solutions.
-                        </p>
-                        <Link
-                            to="contact"
-                            smooth={true}
-                            duration={500}
-                            offset={-70}
-                            className="inline-block"
-                        >
-                            <motion.button 
-                                className='btn btn-md bg-accent hover:bg-accent-hover transition-all'
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                        <img
+                            className='object-cover h-full w-[556px] md:mx-auto lg:mx-0 rounded-2xl'
+                            src={Image}
+                            alt=""
+                        />
+                    </motion.div>
+                    <motion.div 
+                        className='flex flex-col items-center text-center lg:items-start lg:text-left'
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        <div className='flex flex-col'>
+                            <motion.h2 
+                                className='text-3xl lg:text-4xl font-medium lg:font-extrabold mb-3 before:content-about relative before:absolute before:opacity-40 before:-top-[2rem] before:hidden before:lg:block before:-left-[5rem]'
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
                             >
-                                Contact me
-                            </motion.button>
-                        </Link>
+                                About me
+                            </motion.h2>
+                            <motion.hr 
+                                className='mb-8 opacity-5'
+                                initial={{ opacity: 0, width: 0 }}
+                                whileInView={{ opacity: 0.5, width: '100%' }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.3 }}
+                            />
+                            <motion.p 
+                                className='mb-8'
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                            >
+                                Results-driven Software Engineer with a solid foundation in web development, eager to tackle challenging problems with innovative, user-centric solutions. Skilled in <span className="font-bold text-accent">React</span>, <span className="font-bold text-accent">TypeScript</span>, <span className="font-bold text-accent">JavaScript</span>, and <span className="font-bold text-accent">Node.js</span>, I enjoy building responsive and performant web applications with clean, maintainable code. Proficient in modern frontend frameworks, state management solutions, and <span className="font-bold text-accent">RESTful APIs</span>, I am passionate about creating seamless user experiences and implementing robust architectural patterns. A fast learner with a collaborative mindset, I am dedicated to staying current with web technologies and best practices to deliver scalable, production-ready applications that exceed client expectations.
+                                <br /><br />
+                                My approach combines technical expertise, artistic sensitivity, and a deep understanding of my clients' needs. Whether you're an established company or an ambitious startup, I am committed to transforming your ideas into impactful designs that set you apart from the competition.
+                            </motion.p>
+                        </div>
                     </motion.div>
                 </div>
             </div>
