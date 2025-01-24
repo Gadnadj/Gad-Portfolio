@@ -14,15 +14,15 @@ function App() {
     <div className="overflow-x-hidden">
       <Headers />
       <Hero />
-      <SectionDivider bgColor="bg-primary" />
+      <SectionDivider bgColor="bg-secondary" />
       <About />
       <SectionDivider bgColor="bg-secondary" />
       <Skills />
       <SectionDivider bgColor="bg-secondary" />
       <Portfolio />
-      <SectionDivider bgColor="bg-primary" />
-      <Education />
       <SectionDivider bgColor="bg-secondary" />
+      <Education />
+      <SectionDivider />
       <Contact />
       <Footer />
       <BackToTopButton />
