@@ -16,11 +16,17 @@ const Contact = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         
+        if (!import.meta.env.VITE_FORMSPREE_ENDPOINT) {
+            toast.error('Contact form not configured');
+            return;
+        }
+        
         try {
             const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify(formData)
             });
