@@ -2,6 +2,11 @@ import { navigation } from '../data';
 import { Link } from 'react-scroll';
 import { useState, useEffect } from 'react';
 
+type Section = {
+    id: string;
+    distance: number;
+};
+
 const NavBar = () => {
     const [activeSection, setActiveSection] = useState('home');
 
@@ -17,7 +22,9 @@ const NavBar = () => {
                     };
                 }
                 return null;
-            }).filter(Boolean);
+            }).filter((section): section is Section => section !== null);
+
+            if (sections.length === 0) return;
 
             const closest = sections.reduce((prev, curr) => {
                 return prev.distance < curr.distance ? prev : curr;
