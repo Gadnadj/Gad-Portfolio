@@ -17,7 +17,7 @@ const Portfolio = () => {
             <div className='container mx-auto relative z-20'>
                 <div className='flex flex-col items-center text-center -mb-8'>
                     <motion.h2 
-                        className='section-title before:content-portfolio relative before:absolute before:opacity-40 before:-top-[2rem] before:hidden before:lg:block before:-left-[105%]'
+                        className='section-title before:content-portfolio relative before:absolute before:opacity-40 before:-top-[2rem] before:hidden before:lg:block before:-left-[95%]'
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
