@@ -13,7 +13,7 @@ const ShootingStars = ({ containerId = 'particles-container' }: ShootingStarsPro
             // Position aléatoire sur tout l'écran
             particle.style.left = `${Math.random() * 100}%`;
             particle.style.top = `${Math.random() * 100}%`;
-            
+
             // Taille aléatoire
             const size = Math.random() * 4 + 2;
             particle.style.width = `${size}px`;
@@ -21,11 +21,12 @@ const ShootingStars = ({ containerId = 'particles-container' }: ShootingStarsPro
             
             // Opacité aléatoire
             particle.style.opacity = (Math.random() * 0.5 + 0.2).toString();
-            
+            particle.style.backgroundColor = 'gold';
+
             // Animation aléatoire
             particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
             particle.style.animationDelay = `-${Math.random() * 10}s`;
-            
+
             document.getElementById(containerId)?.appendChild(particle);
         };
 

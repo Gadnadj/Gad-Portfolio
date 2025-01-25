@@ -70,3 +70,25 @@
   animation: float linear infinite;
   pointer-events: none;
 }
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(200px) translateY(200px) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: linear-gradient(90deg, #06B6D4, transparent);
+    border-radius: 50%;
+    animation: shoot 1s linear forwards;
+    opacity: 0;
+    box-shadow: 0 0 5px #06B6D4, 0 0 10px #06B6D4, 0 0 20px #06B6D4;
+}
