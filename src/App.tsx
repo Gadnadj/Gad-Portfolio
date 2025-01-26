@@ -14,7 +14,6 @@ function App() {
     <div className="overflow-x-hidden">
       <Headers />
       <Hero />
-      <SectionDivider bgColor="bg-secondary" />
       <About />
       <SectionDivider bgColor="bg-secondary" />
       <Skills />
