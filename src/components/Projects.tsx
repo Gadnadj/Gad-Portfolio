@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { projectData2 as projects } from '../data';
 
 type Project = {
@@ -18,9 +18,11 @@ type ProjectsProps = {
 const Projects = ({ category }: ProjectsProps) => {
     const [showAll, setShowAll] = useState(false);
 
-    const filteredProjects = category === 'all' 
-        ? projects 
-        : projects.filter((project: Project) => project.category.toLowerCase() === category);
+    const filteredProjects = useMemo(() => {
+        return category === 'all' 
+            ? projects 
+            : projects.filter((project: Project) => project.category.toLowerCase() === category);
+    }, [category]);
 
     const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
 
@@ -125,60 +127,66 @@ const Projects = ({ category }: ProjectsProps) => {
 
     return (
         <>
-            <div className='grid lg:grid-cols-3 gap-y-12 lg:gap-x-8 lg:gap-y-8'>
-                {displayedProjects.map((item: Project) => {
-                    const { image, name, link } = item;
-                    const technologies = getProjectTechnologies(name);
+            <motion.div 
+                className='grid lg:grid-cols-3 gap-y-12 lg:gap-x-8 lg:gap-y-8'
+                layout
+            >
+                <AnimatePresence mode="wait">
+                    {displayedProjects.map((item: Project) => {
+                        const { image, name, link } = item;
+                        const technologies = getProjectTechnologies(name);
 
-                    return (
-                        <motion.div
-                            key={name}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.8 }}
-                            transition={{ duration: 0.3 }}
-                            className='group relative overflow-hidden rounded-xl'
-                        >
-                            <div className='relative'>
-                                <img 
-                                    className='w-full h-[300px] object-cover transition-all duration-300 group-hover:scale-110'
-                                    src={image} 
-                                    alt={name}
-                                />
-                                <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 opacity-0 group-hover:opacity-100 transition-all duration-300' />
-                            </div>
-                            <div className='absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-all duration-300'>
-                                <h4 className='text-xl font-bold text-white mb-3'>{name}</h4>
-                                <p className='text-sm text-white/90 mb-4 line-clamp-3'>
-                                    {getProjectDescription(name)}
-                                </p>
-                                <div className="flex flex-col gap-4">
-                                    {link && (
-                                        <a 
-                                            href={link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className='inline-block text-accent hover:text-white transition-colors'
-                                        >
-                                            Visit Project →
-                                        </a>
-                                    )}
-                                    <div className="flex flex-wrap gap-2">
-                                        {technologies.map((tech, index) => (
-                                            <span 
-                                                key={index} 
-                                                className={`text-xs ${getTechColor(tech)} transition-colors`}
+                        return (
+                            <motion.div
+                                key={name}
+                                layout
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.18 }}
+                                className='group relative overflow-hidden rounded-xl'
+                            >
+                                <div className='relative'>
+                                    <img 
+                                        className='w-full h-[300px] object-cover transition-all duration-300 group-hover:scale-110'
+                                        src={image} 
+                                        alt={name}
+                                    />
+                                    <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 opacity-0 group-hover:opacity-100 transition-all duration-300' />
+                                </div>
+                                <div className='absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-all duration-300'>
+                                    <h4 className='text-xl font-bold text-white mb-3'>{name}</h4>
+                                    <p className='text-sm text-white/90 mb-4 line-clamp-3'>
+                                        {getProjectDescription(name)}
+                                    </p>
+                                    <div className="flex flex-col gap-4">
+                                        {link && (
+                                            <a 
+                                                href={link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className='inline-block text-accent hover:text-white transition-colors'
                                             >
-                                                #{tech}
-                                            </span>
-                                        ))}
+                                                Visit Project →
+                                            </a>
+                                        )}
+                                        <div className="flex flex-wrap gap-2">
+                                            {technologies.map((tech, index) => (
+                                                <span 
+                                                    key={index} 
+                                                    className={`text-xs ${getTechColor(tech)} transition-colors`}
+                                                >
+                                                    #{tech}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    );
-                })}
-            </div>
+                            </motion.div>
+                        );
+                    })}
+                </AnimatePresence>
+            </motion.div>
             {filteredProjects.length > 6 && (
                 <motion.div 
                     className='flex justify-center mt-16'
