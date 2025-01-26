@@ -143,7 +143,10 @@ const Projects = ({ category }: ProjectsProps) => {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
-                                transition={{ duration: 0.18 }}
+                                transition={{ 
+                                    duration: 0.3,
+                                    layout: { duration: 0.3 }
+                                }}
                                 className='group relative overflow-hidden rounded-xl'
                             >
                                 <div className='relative'>

@@ -8,6 +8,11 @@ import ShootingStars from './ShootingStars';
 const Portfolio = () => {
     const [category, setCategory] = useState('all');
 
+    const handleCategoryChange = (newCategory: string) => {
+        if (category === newCategory) return; // Prevent unnecessary re-renders
+        setCategory(newCategory);
+    };
+
     return (
         <section
             id='portfolio'
@@ -34,24 +39,37 @@ const Portfolio = () => {
                         Discover my recent projects and creative work
                     </motion.p>
                 </div>
-                <div className='flex justify-center gap-x-8 mb-12'>
+                <motion.div 
+                    className='flex justify-center gap-x-8 mb-12'
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                >
                     {projectsNav.map((item, index) => (
-                        <button
+                        <motion.button
                             key={index}
                             className={`${
                                 category === item.name.toLowerCase()
                                     ? 'text-accent'
                                     : 'text-white'
-                            } cursor-pointer capitalize text-xl`}
-                            onClick={() => setCategory(item.name.toLowerCase())}
+                            } cursor-pointer capitalize text-xl transition-colors`}
+                            onClick={() => handleCategoryChange(item.name.toLowerCase())}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                         >
                             {item.name}
-                        </button>
+                        </motion.button>
                     ))}
-                </div>
-                <Reveal delay={0.2} width="100%">
+                </motion.div>
+                <motion.div
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                >
                     <Projects category={category} setCategory={setCategory} />
-                </Reveal>
+                </motion.div>
             </div>
         </section>
     );
