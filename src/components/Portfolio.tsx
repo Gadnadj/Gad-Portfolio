@@ -1,5 +1,4 @@
 import Projects from './Projects';
-import Reveal from './Reveal';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { projectsNav } from '../data';
