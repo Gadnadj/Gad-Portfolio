@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { animateScroll as scroll } from 'react-scroll';
 import { motion } from 'framer-motion';
 
 const BackToTopButton = () => {
