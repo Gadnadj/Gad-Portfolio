@@ -27,7 +27,7 @@ const BackToTopButton = () => {
     return (
         <motion.button
             onClick={scrollToTop}
-            className={`fixed bottom-8 right-8 p-3 rounded-full bg-accent hover:bg-accent-hover transition-all duration-300 z-[9999] ${
+            className={`fixed bottom-8 right-8 p-3 rounded-full bg-accent hover:bg-accent-hover transition-all duration-300 z-50 ${
                 showButton ? 'visible opacity-100' : 'invisible opacity-0'
             }`}
             initial={{ scale: 0 }}

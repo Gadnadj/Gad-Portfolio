@@ -1,10 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { navigation } from '../data';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 
 const NavMobile = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    // Lock/unlock body scroll when menu is opened/closed
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        // Cleanup on unmount
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
     // framer motion variants
     const circleVariants = {
@@ -47,7 +61,7 @@ const NavMobile = () => {
                 variants={circleVariants}
                 initial='hidden'
                 animate={isOpen ? 'visible' : 'hidden'}
-                className='w-4 h-4 rounded-full bg-accent fixed top-0 right-0'>
+                className='w-4 h-4 rounded-full bg-accent fixed top-0 right-0 z-[60]'>
             </motion.div>
 
             {/* menu */}
@@ -55,7 +69,9 @@ const NavMobile = () => {
                 variants={ulVariants}
                 initial='hidden'
                 animate={isOpen ? 'visible' : 'hidden'}
-                className={`${isOpen ? 'right-0' : '-right-full'} fixed top-0 bottom-0 w-full flex flex-col justify-center items-center transition-all duration-300 overflow-hidden`}
+                className={`${
+                    isOpen ? 'right-0' : '-right-full'
+                } fixed top-0 bottom-0 w-full flex flex-col justify-center items-center transition-all duration-300 overflow-hidden z-[60]`}
             >
                 <div onClick={() => setIsOpen(false)} className="cursor-pointer absolute top-8 right-8">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
