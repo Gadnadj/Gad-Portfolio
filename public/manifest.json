@@ -1,0 +1,37 @@
+{
+  "short_name": "Gad Portfolio",
+  "name": "Gad Nadjar Portfolio",
+  "description": "Full Stack Developer Portfolio showcasing projects and skills",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "id": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ac6b34",
+  "background_color": "#0a0a0a",
+  "orientation": "portrait",
+  "categories": ["portfolio", "development"],
+  "screenshots": [],
+  "prefer_related_applications": false,
+  "display_override": ["standalone", "browser"],
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  }
+} 
